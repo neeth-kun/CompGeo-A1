@@ -1,0 +1,10 @@
+﻿  main.cpp
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(158,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(158,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(158,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(158,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(162,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(162,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(162,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(162,15): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  CG-A1.vcxproj -> D:\BITS_FEES\3-1\Comp Geo\CG-A1\Debug\CG-A1.exe
