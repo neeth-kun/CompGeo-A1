@@ -1,12 +1,15 @@
 ﻿  main.cpp
-D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(162,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(162,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(162,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(162,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(167,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(167,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(167,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(167,15): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(122,34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(122,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(122,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(122,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(127,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(127,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(127,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(127,15): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-A1\main.cpp(164,30): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+  point.cpp
+  Generating Code...
 main.obj : error LNK2019: unresolved external symbol __imp_glewInit referenced in function main
 main.obj : error LNK2019: unresolved external symbol __imp_glutInitWindowSize referenced in function main
 main.obj : error LNK2019: unresolved external symbol __imp_glutInitDisplayMode referenced in function main

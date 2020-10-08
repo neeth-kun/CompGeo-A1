@@ -1,0 +1,12 @@
+﻿  jarvis.cpp
+D:\BITS_FEES\3-1\Comp Geo\CG-AI-2\CG-AI-2\jarvis.cpp(99,19): warning C4018: '<': signed/unsigned mismatch
+D:\BITS_FEES\3-1\Comp Geo\CG-AI-2\CG-AI-2\jarvis.cpp(104,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-AI-2\CG-AI-2\jarvis.cpp(104,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-AI-2\CG-AI-2\jarvis.cpp(104,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-AI-2\CG-AI-2\jarvis.cpp(104,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-AI-2\CG-AI-2\jarvis.cpp(107,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-AI-2\CG-AI-2\jarvis.cpp(107,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-AI-2\CG-AI-2\jarvis.cpp(107,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-AI-2\CG-AI-2\jarvis.cpp(107,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\BITS_FEES\3-1\Comp Geo\CG-AI-2\CG-AI-2\jarvis.cpp(146,30): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+  CG-AI-2.vcxproj -> D:\BITS_FEES\3-1\Comp Geo\CG-AI-2\Debug\CG-AI-2.exe

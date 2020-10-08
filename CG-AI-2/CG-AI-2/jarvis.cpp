@@ -1,22 +1,24 @@
-//Jeff Chastine
 #include <Windows.h>
 #include <GL\glew.h>
 #include <GL\freeglut.h>
 #include <iostream>
 #include <stack>
+#include <vector>
 #include "point.h"
 
 using namespace std;
 
-char title[] = "Graham Scan Algorithm";
+char title[] = "Jarvis March";
 struct Point
 {
     int x, y;
 };
 
-Point p0; int n, flag=0;
+Point p0;
+int n, flag = 0;
 Point points[100];
 stack<Point> S;
+
 
 // A function used by library function qsort() to sort an array of
 // points with respect to the first point
@@ -33,6 +35,7 @@ int compare(const void* vp1, const void* vp2)
     return (o == 2) ? -1 : 1;
 }
 
+
 /**Method draws lines between two 3D points when called. It accepts an input of 6 co-ordinates.*/
 void drawLine(float x1, float y1, float x2, float y2)
 {
@@ -46,85 +49,62 @@ void drawLine(float x1, float y1, float x2, float y2)
 // Prints convex hull of a set of n points.
 void convexHull(Point points[], int n)
 {
-    // Find the bottommost point
-    int ymin = points[0].y, min = 0;
+    // There must be at least 3 points 
+    if (n < 3) return;
+
+    // Initialize Result 
+    vector<Point> hull;
+
+    // Find the leftmost point 
+    int l = 0;
     for (int i = 1; i < n; i++)
+        if (points[i].x < points[l].x)
+            l = i;
+
+    // Start from leftmost point, keep moving counterclockwise 
+    // until reach the start point again. This loop runs O(h) 
+    // times where h is number of points in result or output. 
+    int p = l, q;
+    do
     {
-        int y = points[i].y;
+        // Add current point to result 
+        hull.push_back(points[p]);
 
-        // Pick the bottom-most or chose the left
-        // most point in case of tie
-        if ((y < ymin) || (ymin == y &&
-            points[i].x < points[min].x))
-            ymin = points[i].y, min = i;
-    }
+        // Search for a point 'q' such that orientation(p, x, 
+        // q) is counterclockwise for all points 'x'. The idea 
+        // is to keep track of last visited most counterclock- 
+        // wise point in q. If any point 'i' is more counterclock- 
+        // wise than q, then update q. 
+        q = (p + 1) % n;
+        for (int i = 0; i < n; i++)
+        {
+            // If i is more counterclockwise than current q, then 
+            // update q 
+            if (orientation(points[p], points[i], points[q]) == 2)
+                q = i;
+        }
 
-    // Place the bottom-most point at first position
-    swap(points[0], points[min]);
+        // Now q is the most counterclockwise with respect to p 
+        // Set p as q for next iteration, so that q is added to 
+        // result 'hull' 
+        p = q;
 
-    // Sort n-1 points with respect to the first point.
-    // A point p1 comes before p2 in sorted output if p2
-    // has larger polar angle (in counterclockwise
-    // direction) than p1
-    p0 = points[0];
-    qsort(&points[1], n-1, sizeof(Point), compare);
+    } while (p != l); // While we don't come to first point 
 
-    // If two or more points make same angle with p0,
-    // Remove all but the one that is farthest from p0
-    // Remember that, in above sorting, our criteria was
-    // to keep the farthest point at the end when more than
-    // one points have same angle.
-    int m = 1; // Initialize size of modified array
-    for (int i = 1; i < n; i++)
-    {
-        // Keep removing i while angle of i and i+1 is same
-        // with respect to p0
-        while (i < n - 1 && orientation(p0, points[i], points[i + 1]) == 0)
-            i++;
-        points[m] = points[i];
-        m++; // Update size of modified array
-    }
-
-    // If modified array of points has less than 3 points,
-    // convex hull is not possible
-    if (m < 3) return;
-
-    // Create an empty stack and push first three points
-    // to it.
-    
-   
-    S.push(points[0]);
-    S.push(points[1]);
-    S.push(points[2]);
-
-    // Process remaining n-3 points
-    for (int i = 3; i < m; i++)
-    {
-        // Keep removing top while the angle formed by
-        // points next-to-top, top, and points[i] makes
-        // a non-left turn
-        while (orientation(nextToTop(S), S.top(), points[i]) != 2)
-            S.pop();
-        S.push(points[i]);
-    }
-
-    // Now stack has the output points, print contents of stack
-    Point r = S.top();
-    Point q = r;
+    // Print Result 
     if (flag == 0)
-    cout << "(" << r.x << ", " << r.y << ") ";
-    S.pop();
-    while (!S.empty())
+    cout << "(" << hull[0].x << ", "
+        << hull[0].y << ") ";
+    int i;
+    for (i = 1; i < hull.size(); i++)
     {
-        Point p = S.top();
         if(flag==0)
-        cout << "(" << p.x << ", " << p.y << ") ";
-        drawLine(q.x, q.y, p.x, p.y);
-        S.pop();
-        q = p;
+        cout << "(" << hull[i].x << ", "
+            << hull[i].y << ") ";
+            drawLine(hull[i].x, hull[i].y, hull[i-1].x, hull[i-1].y);
     }
     flag = 1;
-    drawLine(q.x, q.y, r.x, r.y);
+    drawLine(hull[0].x, hull[0].y, hull[i - 1].x, hull[i - 1].y);
     glBegin(GL_POINTS);
     for (int j = 0; j < n; j++)
         glVertex2i(points[j].x, points[j].y);
@@ -132,12 +112,14 @@ void convexHull(Point points[], int n)
     glFlush();
 }
 
+    
+
 
 /** Initialize OpenGL Graphics */
 void initGL()
 {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
-    glColor3f(1.0, 0.0, 0.);
+    glColor3f(0.0, 1.0, 0.);
     glClearDepth(1.0f);                   // Set background depth to farthest
     glEnable(GL_DEPTH_TEST);   // Enable depth testing for z-culling
     glDepthFunc(GL_LEQUAL);    // Set the type of depth-test
@@ -156,14 +138,13 @@ void changeViewPort(int w, int h)
 
 void render()
 {
-    
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);     // To operate on model-view matrix
 
     glLoadIdentity();                 // Reset the model-view matrix
-    glTranslatef(0.0f, 0.0f, -(n*10));  // Move right and into the screen
- /**Here, the planar contours are drawn in red.*/
-    
+    glTranslatef(0.0f, 0.0f, -(n * 10));  // Move right and into the screen
+
     convexHull(points, n);
     glutSwapBuffers();
 }
@@ -171,6 +152,7 @@ void render()
 
 
 int main(int argc, char* argv[]) {
+
     int n1, n2;
     cout << "Enter the no. of points:";
     cin >> n;
@@ -189,7 +171,7 @@ int main(int argc, char* argv[]) {
     // Set the window size
     glutInitWindowSize(800, 600);
     // Create the window with the title "Hello,GL"
-    glutCreateWindow("Hello, GL");
+    glutCreateWindow(title);
     // Bind the two functions (above) to respond when necessary
     glutReshapeFunc(changeViewPort);
     glutDisplayFunc(render);
